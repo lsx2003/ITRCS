@@ -1,13 +1,19 @@
 .header {
-  width: 100vw;
+  width: 100%;
   height: 50px;
+  min-height: 50px;
   border-bottom: 1.5px solid black;
   display: grid;
-  grid-template-columns: 1fr 12fr 1fr;
+  grid-template-columns: 1fr 12fr 1.5fr;
   align-items: center;
   justify-items: center;
+  min-width: 700px;
 }
 
+.logo {
+  min-width: 100px;
+  min-height: 50px;
+}
 .SearchContainer {
   display: flex;
   width: 60%;
@@ -49,6 +55,7 @@
 .login {
   font-size: 15px;
   margin-right: 10px;
+  min-width: 100px;
   cursor: pointer;
 }
 .login:hover {

@@ -1,6 +1,7 @@
 .footer {
   position: absolute;
-  top: 100%;
+  top: 800px;
+  bottom: 0;
   width: 100vw;
   height: 50px;
   border-top: 1.5px solid black;
@@ -8,4 +9,6 @@
   grid-template-columns: 1fr 12fr 1fr;
   align-items: center;
   justify-items: center;
+  min-width: 700px;
+  max-height: 50px;
 }

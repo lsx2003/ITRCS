@@ -19,12 +19,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
-<<<<<<< Updated upstream
     "yup": "^0.32.9",
     "@hookform/resolvers": "^2.7.1",
     "react-hook-form": "^7.12.1"
-=======
-    "react-redux": "^8.0.5"
->>>>>>> Stashed changes
   }
 }

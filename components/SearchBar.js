@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import styles from "../styles/Header.module.css";
 import { BsSearch } from "react-icons/bs";
 

@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
+import { Fragment, useEffect } from "react";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import {useDispatch, useSelector} from 'react-redux';
@@ -37,14 +38,14 @@ function Login() {
             alertService.error;
             return;
         }
-        if(user) {
-            router.push('/');
-            try{
-                localStorage.setItem('user',JSON.stringify(user));
-            } catch(e) {
-                console.log('localStorage is not working');
-            }
-        }
+        // if(user) {
+        //     router.push('/');
+        //     try{
+        //         localStorage.setItem('user',JSON.stringify(user));
+        //     } catch(e) {
+        //         console.log('localStorage is not working');
+        //     }
+        // }
         
     },[user,error,router]);
 

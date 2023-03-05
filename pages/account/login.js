@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import NextLink from 'next/link';
 import { Layout } from 'components/account';
 import { login } from 'slices/account/authSlice';
-// import { userService, alertService } from 'services';
+import { alertService } from 'services';
 
 export default Login;
 
@@ -34,7 +34,7 @@ function Login() {
 
     useEffect(() => {
         if(error) {
-            // alertService.error
+            alertService.error;
             return;
         }
         if(user) {

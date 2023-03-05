@@ -35,7 +35,7 @@ function Login() {
 
     useEffect(() => {
         if(error) {
-            alertService.error;
+            alertService.error(error);
             return;
         }
         // if(user) {

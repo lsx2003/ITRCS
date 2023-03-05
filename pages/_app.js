@@ -3,11 +3,13 @@ import Header from "../components/header";
 import Footer from "../components/Footer";
 import { Provider } from "react-redux";
 import store from "../store/store";
+import { Alert } from "components/Alert";
 
 export default function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <Header></Header>
+      <Alert />
       <Footer></Footer>
       <Component {...pageProps} />
     </Provider>

@@ -23,9 +23,9 @@ export default function PressHome(props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   //뉴스 조회
-  const searchWord = '교권침해';
+  const searchWord = context.query.searchWord;
   const encode = encodeURI(searchWord);
   try {
     const response = await axios.get(

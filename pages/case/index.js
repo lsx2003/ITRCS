@@ -1,5 +1,5 @@
-import { Fragment } from "react";
-import Tab from "../../components/Tab";
+import { Fragment } from 'react';
+import Tab from '../../components/Tab';
 
 export default function CaseHome() {
   return (

@@ -9,3 +9,11 @@ body {
   height: 100vh;
   min-width: 700px;
 }
+
+
+@font-face {
+  font-family: "ImcreSoojin";
+  src: url('/fonts/ImcreSoojin.ttf');
+  font-weight: normal;
+  font-style: normal;
+}

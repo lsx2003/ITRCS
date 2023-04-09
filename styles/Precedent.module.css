@@ -6,16 +6,15 @@
   justify-content: flex-start;
   align-items: center;
 }
-
 .container :nth-child(10) {
   border-bottom: none;
   margin-bottom: 10px;
 }
 
-div .articleContainer {
+div .precedentContainer {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   height: auto;
   width: 90%;
   max-width: 1000px;
@@ -31,30 +30,42 @@ div .articleContainer {
     Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.title {
-  display: inline-block;
+.summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 20px;
   margin-bottom: 10px;
   font-weight: 700;
-  color: var(--color-point);
 }
 
-.pubDate {
-  text-align: right;
-  margin-top: 15px;
-  font-size: 16px;
-  font-weight: 600;
+.court {
+  font-size: 15px;
+  letter-spacing: 1px;
+  width: max-content;
+  padding: 5px 8px 5px 8px;
+  border: 1px solid white;
+  color: white;
+  background-color: #3c6382;
+  border-radius: 10px;
+}
+
+.category {
+  color: var(--color-point);
 }
 
 .link {
   text-decoration: none;
-  color: var(--color-base);
-  height: 100%;
-  width: 100%;
+  color: var(--color-link);
+  width: max-content;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 5px;
 }
 
 .link:hover {
   text-decoration: none;
+  font-weight: bold;
   color: var(--color-link-hover);
 }
 

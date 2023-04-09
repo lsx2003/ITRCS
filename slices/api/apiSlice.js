@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const apiSlice = createSlice({
-  name: "apiSlice",
+  name: 'apiSlice',
   initialState: {
     case: null,
     precedent: null,
@@ -20,5 +20,5 @@ const apiSlice = createSlice({
   },
 });
 
-export default apiSlice;
+export default apiSlice.reducer;
 export const { setCase, setPrecedent, setPress } = apiSlice.actions;

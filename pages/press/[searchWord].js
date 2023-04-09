@@ -1,23 +1,27 @@
 import Section from '@/components/press/PressSection';
-import SearchBar from '@/components/SearchBar';
-import { setPress } from '@/slices/apiSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import Tab from '../../components/Tab';
+import SearchBar from '@/components/press/SearchBar';
+import { setPress } from '@/slices/api/apiSlice';
+import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
 import styles from '../../styles/Press.module.css';
 import axios from 'axios';
+import { useEffect } from 'react';
+import { setKeyword } from '@/slices/search/searchSlice';
 
 export default function PressHome(props) {
   const dispatch = useDispatch();
   dispatch(setPress(props));
-  const state = useSelector((state) => {
-    return state.apiData.press;
-  });
-  console.log(state);
+  const router = useRouter();
+  const pathName = router.pathname;
+
+  useEffect(() => {
+    dispatch(setKeyword(''));
+  }, []);
 
   return (
     <div className={styles.container}>
-      <Tab></Tab>
-      <SearchBar></SearchBar>
+      <div className={styles.pageTitle}>언론기사 검색</div>
+      <SearchBar pathName={pathName}></SearchBar>
       <Section></Section>
     </div>
   );
@@ -27,9 +31,11 @@ export async function getServerSideProps(context) {
   //뉴스 조회
   const searchWord = context.query.searchWord;
   const encode = encodeURI(searchWord);
+  const perPage = 10;
+
   try {
     const response = await axios.get(
-      `https://openapi.naver.com/v1/search/news.json?query=${encode}`,
+      `https://openapi.naver.com/v1/search/news.json?query=${encode}&display=${perPage}`,
       {
         headers: {
           Host: 'openapi.naver.com',
@@ -40,7 +46,7 @@ export async function getServerSideProps(context) {
       },
     );
     const { data } = response;
-    console.log(data);
+    console.log('data', data);
     if (response.status === 200) {
       return { props: data };
     }

@@ -23,23 +23,20 @@ div .precedentContainer {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 10px;
   font-weight: 700;
 }
 
 .court {
-  font-size: 12px;
+  font-size: 15px;
+  letter-spacing: 1px;
   width: max-content;
-  padding: 5px;
-  border: 1px solid black;
+  padding: 5px 8px 5px 8px;
+  border: 1px solid white;
+  color: white;
+  background-color: #3c6382;
   border-radius: 10px;
-}
-
-.date {
-}
-
-.sentence {
 }
 
 .category {

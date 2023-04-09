@@ -6,9 +6,9 @@
 
 :root {
   --color-base: hsl(210, 29%, 24%);
-  --color-point: #079992;
+  --color-point: #1e3799;
   --color-link: #7f8c8d;
-  --color-link-hover: #2c3e50;
+  --color-link-hover: #7f8fa6;
 }
 
 body {

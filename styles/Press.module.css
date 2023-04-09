@@ -21,25 +21,22 @@ div .articleContainer {
 
 .title {
   display: inline-block;
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 10px;
   font-weight: 700;
   color: var(--color-point);
 }
 
-.description {
-  display: inline-block;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
 .pubDate {
-  font-size: 13px;
+  text-align: right;
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .link {
   text-decoration: none;
-  color: var(--color-link);
+  color: var(--color-base);
   height: 100%;
   width: 100%;
 }

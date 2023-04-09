@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { Fragment } from "react";
 import styles from "../styles/Header.module.css";
-import Image from "next/image";
 import { useRouter } from 'next/router';
+import Image from "next/image";
 import NextLink from 'next/link';
 export default function Header() {
   const router = useRouter();
@@ -12,17 +12,29 @@ export default function Header() {
   return (
     <Fragment>
       <header className={styles.header}>
-        <Image
-          src="/logo.jpg"
-          alt="logo"
-          width={100}
-          height={50}
-          className={styles.logo}
+        <div className={styles.headerTitle}>
+          Hansoom
+        <Image 
+        src="icons/hansoom_icon.svg"
+        width="27"
+        height="20"
         />
+        </div>
         <div></div>
-        <NextLink href="/account/login">
-          <div className={styles.login}>로그인/ 회원가입</div>
-        </NextLink>
+        <div className={styles.menu}>
+          <NextLink href="/account/login">
+            <div className={styles.menuItem} style={{  borderRight: "solid",borderColor: "white"}}>최신기사</div>
+          </NextLink>
+          <NextLink href="/account/login">
+            <div className={styles.menuItem} style={{  borderRight: "solid",borderColor: "white"}}>판례관련</div>
+          </NextLink>
+          <NextLink href="/account/login">
+            <div className={styles.menuItem} style={{  borderRight: "solid",borderColor: "white"}}>사연보기</div>
+          </NextLink>
+          <NextLink href="/account/login" style={{  marginRight:0}}>
+            <div className={styles.menuItem}>로그인</div>
+          </NextLink>
+        </div>
       </header>
     </Fragment>
   );

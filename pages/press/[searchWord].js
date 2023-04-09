@@ -1,7 +1,7 @@
 import Section from '@/components/press/PressSection';
 import SearchBar from '@/components/SearchBar';
-import { setPress } from '@/slices/apiSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { setPress } from '@/slices/api/apiSlice';
+import { useDispatch } from 'react-redux';
 import Tab from '../../components/Tab';
 import styles from '../../styles/Press.module.css';
 import axios from 'axios';
@@ -9,10 +9,6 @@ import axios from 'axios';
 export default function PressHome(props) {
   const dispatch = useDispatch();
   dispatch(setPress(props));
-  const state = useSelector((state) => {
-    return state.apiData.press;
-  });
-  console.log(state);
 
   return (
     <div className={styles.container}>

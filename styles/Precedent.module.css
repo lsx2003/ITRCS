@@ -8,7 +8,7 @@
   padding: 12vh 0 0 0;
 }
 
-div .articleContaioner {
+div .precedentContaioner {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -18,7 +18,7 @@ div .articleContaioner {
   padding: 20px 10px 20px 10px;
   border-bottom: 1px solid black;
 }
-
+/* 
 .title {
   display: inline-block;
   font-size: 18px;
@@ -46,4 +46,4 @@ div .articleContaioner {
 .link:hover {
   text-decoration: none;
   color: #7f8c8d;
-}
+} */

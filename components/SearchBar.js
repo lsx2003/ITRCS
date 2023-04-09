@@ -1,11 +1,38 @@
-import styles from "../styles/Search.module.css";
-import { BsSearch } from "react-icons/bs";
+import styles from '../styles/Search.module.css';
+import { BsSearch } from 'react-icons/bs';
+import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from 'react-redux';
+import { setKeyword } from '@/slices/search/searchSlice';
 
 export default function SearchBar() {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  const router = useRouter();
+  const { push, pathname } = router;
+  const pagePath =
+    pathname === '/press'
+      ? 'press/'
+      : pathname.slice(0, -12) || '/precedent'
+      ? 'precedent/'
+      : pathname.slice(0, -12);
+
+  const inputValueHandler = (e) => {
+    dispatch(setKeyword(e.target.value));
+  };
+
+  const movePageHandler = () => {
+    push(pagePath + state.search.keyword);
+  };
+  console.log(router);
+  // console.log('router', router);
   return (
     <div className={styles.SearchContainer}>
-      <input className={styles.SearchBar} placeholder=""></input>
-      <button className={styles.SearchBtn}>
+      <input
+        className={styles.SearchBar}
+        placeholder='검색어를 입력하세요.'
+        onChange={inputValueHandler}
+      ></input>
+      <button className={styles.SearchBtn} onClick={movePageHandler}>
         <BsSearch className={styles.SearchIcom}></BsSearch>
       </button>
     </div>

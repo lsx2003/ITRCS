@@ -3,9 +3,23 @@
   height: 100vh;
   display: flex;
   justify-content: center;
+  max-width: 1200px;
+  max-height: 2000px;
 }
 
 .article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  height: 100vh;
+  border-radius: 10px;
+  overflow: scroll;
+  margin-top: 20px;
+  border: 1px solid black;
+}
+
+.precedent {
   display: flex;
   flex-direction: column;
   align-items: center;

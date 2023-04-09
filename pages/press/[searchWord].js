@@ -5,14 +5,22 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import styles from '../../styles/Press.module.css';
 import axios from 'axios';
+import { useEffect } from 'react';
+import { setKeyword } from '@/slices/search/searchSlice';
 
 export default function PressHome(props) {
   const dispatch = useDispatch();
   dispatch(setPress(props));
   const router = useRouter();
   const pathName = router.pathname;
+
+  useEffect(() => {
+    dispatch(setKeyword(''));
+  }, []);
+
   return (
     <div className={styles.container}>
+      <div className={styles.pageTitle}>언론기사 검색</div>
       <SearchBar pathName={pathName}></SearchBar>
       <Section></Section>
     </div>

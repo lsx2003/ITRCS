@@ -4,6 +4,8 @@ import Section from '@/components/precedent/PrecedentSection';
 import styles from '../../styles/Precedent.module.css';
 import SearchBar from '@/components/precedent/SearchBar';
 import { setPrecedent } from '@/slices/api/apiSlice';
+import { useEffect } from 'react';
+import { setKeyword } from '@/slices/search/searchSlice';
 
 const convert = require('xml-js');
 
@@ -11,15 +13,19 @@ export default function PrecedentHome({ PrecSearch }) {
   const dispatch = useDispatch();
   dispatch(setPrecedent(PrecSearch));
 
+  useEffect(() => {
+    dispatch(setKeyword(''));
+  }, []);
+
   return (
     <div className={styles.container}>
+      <div className={styles.pageTitle}>판례 검색</div>
       <SearchBar></SearchBar>
       <Section></Section>
     </div>
   );
 }
 export async function getServerSideProps() {
-  //판례 조회
   const searchWord = '아동';
   const encode = encodeURI(searchWord);
 

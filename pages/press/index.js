@@ -4,12 +4,20 @@ import { setPress } from '@/slices/api/apiSlice';
 import { useDispatch } from 'react-redux';
 import styles from '../../styles/Press.module.css';
 import axios from 'axios';
+import { useEffect } from 'react';
+import { setKeyword } from '@/slices/search/searchSlice';
 
 export default function PressHome(props) {
   const dispatch = useDispatch();
   dispatch(setPress(props));
+
+  useEffect(() => {
+    dispatch(setKeyword(''));
+  }, []);
+
   return (
     <div className={styles.container}>
+      <div className={styles.pageTitle}>언론기사 검색</div>
       <SearchBar></SearchBar>
       <div className={styles.keyword}></div>
       <Section></Section>

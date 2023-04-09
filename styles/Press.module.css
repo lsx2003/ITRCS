@@ -8,11 +8,11 @@
   padding: 12vh 0 0 0;
 }
 
-div .articleContaioner {
+div .articleContainer {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 150px;
+  height: auto;
   width: 90%;
   max-width: 1000px;
   padding: 20px 10px 20px 10px;
@@ -24,11 +24,12 @@ div .articleContaioner {
   font-size: 18px;
   margin-bottom: 10px;
   font-weight: 700;
+  color: var(--color-point);
 }
 
 .description {
   display: inline-block;
-  font-size: 13px;
+  font-size: 14px;
   margin-bottom: 10px;
 }
 
@@ -38,12 +39,20 @@ div .articleContaioner {
 
 .link {
   text-decoration: none;
-  color: black;
+  color: var(--color-link);
   height: 100%;
   width: 100%;
 }
 
 .link:hover {
   text-decoration: none;
-  color: #7f8c8d;
+  color: var(--color-link-hover);
+}
+
+.notFound {
+  margin: auto;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial,
+    sans-serif;
+  font-size: 27px;
+  color: var(--color-base);
 }

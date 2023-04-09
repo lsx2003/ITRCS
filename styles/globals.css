@@ -4,15 +4,21 @@
   box-sizing: border-box;
 }
 
+:root {
+  --color-base: hsl(210, 29%, 24%);
+  --color-point: #079992;
+  --color-link: #7f8c8d;
+  --color-link-hover: #2c3e50;
+}
+
 body {
   max-width: 100vw;
   height: 100vh;
   min-width: 700px;
 }
 
-
 @font-face {
-  font-family: "ImcreSoojin";
+  font-family: 'ImcreSoojin';
   src: url('/fonts/ImcreSoojin.ttf');
   font-weight: normal;
   font-style: normal;

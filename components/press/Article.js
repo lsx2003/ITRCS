@@ -7,16 +7,18 @@ export default function Article() {
   const state = useSelector((state) => {
     return state.apiData.press;
   });
-  console.log('state', state);
 
   return (
     <>
+      {state.items.length === 0 ? (
+        <div className={styles.notFound}>검색결과가 없습니다.</div>
+      ) : null}
       {state.items &&
         state.items.map((article) => {
           const title = parse(article.title);
           const description = parse(article.description);
           return (
-            <div key={article.link} className={styles.articleContaioner}>
+            <div key={article.link} className={styles.articleContainer}>
               <div className={styles.title}>{title}</div>
               <div className={styles.description}>
                 <Link href={article.originallink} target='_blank' className={styles.link}>

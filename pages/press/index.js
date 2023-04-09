@@ -1,19 +1,17 @@
 import Section from '@/components/press/PressSection';
-import SearchBar from '@/components/SearchBar';
+import SearchBar from '@/components/press/SearchBar';
 import { setPress } from '@/slices/api/apiSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import Tab from '../../components/Tab';
+import { useDispatch } from 'react-redux';
 import styles from '../../styles/Press.module.css';
 import axios from 'axios';
 
 export default function PressHome(props) {
   const dispatch = useDispatch();
   dispatch(setPress(props));
-
   return (
     <div className={styles.container}>
-      <Tab></Tab>
       <SearchBar></SearchBar>
+      <div className={styles.keyword}></div>
       <Section></Section>
     </div>
   );
@@ -23,9 +21,10 @@ export async function getServerSideProps() {
   //뉴스 조회
   const searchWord = '교권침해';
   const encode = encodeURI(searchWord);
+  const perPage = 10;
   try {
     const response = await axios.get(
-      `https://openapi.naver.com/v1/search/news.json?query=${encode}`,
+      `https://openapi.naver.com/v1/search/news.json?query=${encode}&display=${perPage}`,
       {
         headers: {
           Host: 'openapi.naver.com',
@@ -36,7 +35,7 @@ export async function getServerSideProps() {
       },
     );
     const { data } = response;
-    console.log(data);
+    console.log('data', data);
     if (response.status === 200) {
       return { props: data };
     }

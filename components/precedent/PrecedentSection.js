@@ -6,9 +6,9 @@ export default function PrecedentSection() {
   return (
     <Fragment>
       <div className={styles.container}>
-        <di className={styles.precedent}>
+        <div className={styles.precedent}>
           <Precedent></Precedent>
-        </di>
+        </div>
       </div>
     </Fragment>
   );

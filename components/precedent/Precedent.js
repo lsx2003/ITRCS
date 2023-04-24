@@ -9,9 +9,9 @@ export default function Precedent() {
 
   return (
     <>
-      {!state.prec ? <div className={styles.notFound}>검색결과가 없습니다.</div> : null}
-      {state.prec &&
-        state.prec.map((prec) => {
+      {!state ? <div className={styles.notFound}>검색결과가 없습니다.</div> : null}
+      {state &&
+        state.map((prec) => {
           const link = 'https://www.law.go.kr' + prec['판례상세링크']['_text'];
           {
             return (

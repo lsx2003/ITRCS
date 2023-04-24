@@ -18,17 +18,17 @@ export default function Header() {
         </div>
         <div></div>
         <div className={styles.menu}>
-          <NextLink href='/press'>
+          <NextLink href='/press?page=1'>
             <div className={styles.menuItem} style={{ borderRight: 'solid', borderColor: 'white' }}>
               최신기사
             </div>
           </NextLink>
-          <NextLink href='/precedent'>
+          <NextLink href='/precedent?page=1'>
             <div className={styles.menuItem} style={{ borderRight: 'solid', borderColor: 'white' }}>
               판례관련
             </div>
           </NextLink>
-          <NextLink href='/case'>
+          <NextLink href='/post'>
             <div className={styles.menuItem} style={{ borderRight: 'solid', borderColor: 'white' }}>
               사연보기
             </div>

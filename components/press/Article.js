@@ -1,5 +1,5 @@
 import styles from '../../styles/Press.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 const parse = require('html-react-parser');
 
@@ -10,15 +10,13 @@ export default function Article() {
 
   return (
     <>
-      {state.items.length === 0 ? (
-        <div className={styles.notFound}>검색결과가 없습니다.</div>
-      ) : null}
-      {state.items &&
-        state.items.map((article) => {
+      {state?.length === 0 ? <div className={styles.notFound}>검색결과가 없습니다.</div> : null}
+      {state &&
+        state.map((article, idx) => {
           const title = parse(article.title);
           const description = parse(article.description);
           return (
-            <div key={article.link} className={styles.articleContainer}>
+            <div key={idx} className={styles.articleContainer}>
               <div className={styles.title}>{title}</div>
               <div className={styles.description}>
                 <Link href={article.originallink} target='_blank' className={styles.link}>

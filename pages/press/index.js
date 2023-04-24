@@ -4,35 +4,40 @@ import { setPress } from '@/slices/api/apiSlice';
 import { useDispatch } from 'react-redux';
 import styles from '../../styles/Press.module.css';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { setKeyword } from '@/slices/search/searchSlice';
+import { useRouter } from 'next/router';
 
-export default function PressHome(props) {
+export default function PressHome({ items }) {
   const dispatch = useDispatch();
-  dispatch(setPress(props));
+  const router = useRouter();
+  const currentPage = Number(router.query.page);
 
   useEffect(() => {
+    dispatch(setPress(items));
     dispatch(setKeyword(''));
   }, []);
 
   return (
     <div className={styles.container}>
-      <div className={styles.pageTitle}>언론기사 검색</div>
+      <div className={styles.banner}>
+        <h1>언론기사 검색</h1>
+        <p>키워드를 통해 관련된 언론기사를 검색 해보세요.</p>
+      </div>
       <SearchBar></SearchBar>
-      <div className={styles.keyword}></div>
-      <Section></Section>
+      <Section currentPage={currentPage} items={items}></Section>
     </div>
   );
 }
 
-export async function getServerSideProps() {
-  //뉴스 조회
+export async function getServerSideProps(context) {
   const searchWord = '교권침해';
   const encode = encodeURI(searchWord);
+  const startPage = (Number(context.query.page) - 1) * 10 + 1;
   const perPage = 10;
   try {
     const response = await axios.get(
-      `https://openapi.naver.com/v1/search/news.json?query=${encode}&display=${perPage}`,
+      `https://openapi.naver.com/v1/search/news.json?query=${encode}&start=${startPage}&display=${perPage}`,
       {
         headers: {
           Host: 'openapi.naver.com',

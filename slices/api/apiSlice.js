@@ -3,22 +3,24 @@ import { createSlice } from '@reduxjs/toolkit';
 const apiSlice = createSlice({
   name: 'apiSlice',
   initialState: {
-    case: null,
     precedent: null,
     press: null,
   },
   reducers: {
-    setCase: (state, action) => {
-      state.case = action.payload;
-    },
     setPrecedent: (state, action) => {
       state.precedent = action.payload;
     },
     setPress: (state, action) => {
       state.press = action.payload;
     },
+    // addPrecedent: (state, action) => {
+    //   state.precedent?.push(...action.payload);
+    // },
+    // addPress: (state, action) => {
+    //   state.press?.push(...action.payload);
+    // },
   },
 });
 
 export default apiSlice.reducer;
-export const { setCase, setPrecedent, setPress } = apiSlice.actions;
+export const { setPrecedent, setPress, addPrecedent, addPress } = apiSlice.actions;

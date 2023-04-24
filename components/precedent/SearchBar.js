@@ -16,16 +16,23 @@ export default function SearchBar() {
   };
 
   const movePageHandler = () => {
-    push(pagePath + state.search.keyword);
+    push(pagePath + state.search.keyword + '?page=1');
+  };
+
+  const enterHandler = (event) => {
+    if (event.keyCode === 13) {
+      movePageHandler();
+    }
   };
 
   return (
     <div className={styles.SearchContainer}>
       <input
-        value={state.search.keyword}
+        value={state.search?.keyword}
         className={styles.SearchBar}
         placeholder='검색어를 입력하세요.'
         onChange={inputValueHandler}
+        onKeyDown={enterHandler}
       ></input>
       <button className={styles.SearchBtn} onClick={movePageHandler}>
         <BsSearch className={styles.SearchIcom}></BsSearch>

@@ -1,6 +1,6 @@
-import Section from '@/components/press/PressSection';
-import SearchBar from '@/components/SearchBar';
-import { setPress } from '@/slices/apiSlice';
+import Section from 'components/press/PressSection';
+import SearchBar from 'components/SearchBar';
+import { setPress } from 'slices/apiSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Tab from '../../components/Tab';
 import styles from '../../styles/Press.module.css';

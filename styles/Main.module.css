@@ -60,6 +60,7 @@
 .mainContentConatiner .mainContentWarpper{
   color:white;
   text-align: center;
+  overflow-y:scroll;
 }
 .mainContentConatiner .mainContentButton{
   margin-top:32px;

@@ -2,7 +2,7 @@ import styles from '../../styles/Search.module.css';
 import { BsSearch } from 'react-icons/bs';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { setKeyword } from '@/slices/search/searchSlice';
+import { setKeyword } from 'slices/search/searchSlice';
 
 export default function SearchBar() {
   const dispatch = useDispatch();

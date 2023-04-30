@@ -3,11 +3,10 @@ import SearchBar from 'components/press/SearchBar';
 import { setPress } from 'slices/api/apiSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import Tab from '../../components/Tab';
 import styles from '../../styles/Press.module.css';
 import axios from 'axios';
 import { useEffect } from 'react';
-import { setKeyword } from '@/slices/search/searchSlice';
+import { setKeyword } from 'slices/search/searchSlice';
 
 export default function PressHome({ items }) {
   const dispatch = useDispatch();

@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import Section from '@/components/precedent/PrecedentSection';
+import Section from 'components/precedent/PrecedentSection';
 import styles from '../../styles/Precedent.module.css';
-import SearchBar from '@/components/precedent/SearchBar';
-import { setPrecedent } from '@/slices/api/apiSlice';
+import SearchBar from 'components/precedent/SearchBar';
+import { setPrecedent } from 'slices/api/apiSlice';
 import { useEffect, useState } from 'react';
-import { setKeyword } from '@/slices/search/searchSlice';
+import { setKeyword } from 'slices/search/searchSlice';
 import { useRouter } from 'next/router';
 
 const convert = require('xml-js');

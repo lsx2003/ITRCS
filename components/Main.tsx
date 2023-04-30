@@ -2,13 +2,13 @@
 import { Fragment ,useRef,useEffect} from "react";
 import styles from "../styles/Main.module.css";
 import Image from "next/image";
-import SearchBar from "./SearchBar";
+import SearchBar from "./press/SearchBar";
 import BackgroundPage from "./main/BackgroundPage";
 import { Parallax, IParallax } from '@react-spring/parallax'
 
 export default function Main() {
   const parallax = useRef<IParallax>(null!);
-  const textBox = useRef();
+  const textBox = useRef<HTMLInputElement>();
   let index = 0;
   const scroll = () => {
     index++;
@@ -20,16 +20,16 @@ export default function Main() {
     }
   }
   useEffect(() => {
-    textBox.current.addEventListener('scroll', (e) => {
-      if(textBox.current.scrollTop < textBox.current.scrollHeight / 3 * 1){
-        parallax.current.scrollTo(0)
-      }else if(textBox.current.scrollTop >= textBox.current.scrollHeight / 3 * 1 &&
-      textBox.current.scrollTop < textBox.current.scrollHeight / 3 * 2){
-        parallax.current.scrollTo(1)
-      }else if(textBox.current.scrollTop > textBox.current.scrollHeight / 3 * 2){
-        parallax.current.scrollTo(2)
-      }
-    })
+      textBox.current.addEventListener('scroll', (e) => {
+        if(textBox.current.scrollTop < textBox.current.scrollHeight / 3 * 1){
+          parallax.current.scrollTo(0)
+        }else if(textBox.current.scrollTop >= textBox.current.scrollHeight / 3 * 1 &&
+        textBox.current.scrollTop < textBox.current.scrollHeight / 3 * 2){
+          parallax.current.scrollTo(1)
+        }else if(textBox.current.scrollTop > textBox.current.scrollHeight / 3 * 2){
+          parallax.current.scrollTo(2)
+        }
+      })
   }, [])
 
   return (

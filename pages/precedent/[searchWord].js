@@ -1,14 +1,15 @@
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
 import Section from '@/components/precedent/PrecedentSection';
-import styles from '../../styles/Precedent.module.css';
 import SearchBar from '@/components/precedent/SearchBar';
 import { setPrecedent } from '@/slices/api/apiSlice';
+import { useDispatch } from 'react-redux';
+import styles from '../../styles/Precedent.module.css';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { setKeyword } from '@/slices/search/searchSlice';
 import { useRouter } from 'next/router';
 
 const convert = require('xml-js');
+
 export default function PrecedentHome({ PrecSearch }) {
   const [path, setPath] = useState('');
   console.log(path);
@@ -16,13 +17,7 @@ export default function PrecedentHome({ PrecSearch }) {
   const router = useRouter();
   const pathName = router.pathname;
   const currentPage = Number(router.query.page);
-
   dispatch(setPrecedent(PrecSearch.prec));
-
-  useEffect(() => {
-    dispatch(setKeyword(''));
-    setPath(router.asPath.slice(0, -1));
-  }, []);
 
   const getPreData = () => {
     router.push(path + String(currentPage - 1));
@@ -32,6 +27,11 @@ export default function PrecedentHome({ PrecSearch }) {
     router.push(path + String(currentPage + 1));
     dispatch(setPrecedent(PrecSearch.prec));
   };
+
+  useEffect(() => {
+    dispatch(setKeyword(''));
+    setPath(router.asPath.slice(0, -1));
+  }, []);
 
   useEffect(() => {
     const cancelUpload = (e) => {
@@ -69,21 +69,27 @@ export default function PrecedentHome({ PrecSearch }) {
     </div>
   );
 }
+
 export async function getServerSideProps(context) {
-  const searchWord = '아동';
+  const searchWord = context.query.searchWord;
   const encode = encodeURI(searchWord);
   const page = context.query.page;
   try {
     const response = await axios.get(
-      `https://www.law.go.kr/DRF/lawSearch.do?OC=windxtoto123&target=prec&type=xml&query=${encode}&display=10&page=${page}`,
+      `https://www.law.go.kr/DRF/lawSearch.do?OC=windxtoto123&target=prec&type=xml&query=${encode}&display=10`,
     );
     const { data } = response;
+    console.log('data', data);
     const xmlToJson = convert.xml2json(data, { compact: true, spaces: 4 });
     const prec = JSON.parse(xmlToJson);
-    return { props: prec };
+
+    // 판례 상세 조회 http://www.law.go.kr/DRF/lawService.do?OC=test&target=prec&ID=228541&type=HTML
+
+    if (response.status === 200) {
+      return { props: prec };
+    }
   } catch (err) {
     console.log(err);
   }
-
   return { props: {} };
 }

@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import { Fragment } from "react";
-import styles from "../styles/Header.module.css";
+import { Fragment } from 'react';
+import styles from '../styles/Header.module.css';
 import { useRouter } from 'next/router';
-import Image from "next/image";
+import Image from 'next/image';
 import NextLink from 'next/link';
 export default function Header() {
   const router = useRouter();
@@ -14,24 +14,26 @@ export default function Header() {
       <header className={styles.header}>
         <div className={styles.headerTitle}>
           Hansoom
-        <Image 
-        src="icons/hansoom_icon.svg"
-        width="27"
-        height="20"
-        />
+          <Image src='icons/hansoom_icon.svg' width='27' height='20' alt='logo' />
         </div>
         <div></div>
         <div className={styles.menu}>
-          <NextLink href="/account/login">
-            <div className={styles.menuItem} style={{  borderRight: "solid",borderColor: "white"}}>최신기사</div>
+          <NextLink href='/press?page=1'>
+            <div className={styles.menuItem} style={{ borderRight: 'solid', borderColor: 'white' }}>
+              최신기사
+            </div>
           </NextLink>
-          <NextLink href="/account/login">
-            <div className={styles.menuItem} style={{  borderRight: "solid",borderColor: "white"}}>판례관련</div>
+          <NextLink href='/precedent?page=1'>
+            <div className={styles.menuItem} style={{ borderRight: 'solid', borderColor: 'white' }}>
+              판례관련
+            </div>
           </NextLink>
-          <NextLink href="/account/login">
-            <div className={styles.menuItem} style={{  borderRight: "solid",borderColor: "white"}}>사연보기</div>
+          <NextLink href='/post'>
+            <div className={styles.menuItem} style={{ borderRight: 'solid', borderColor: 'white' }}>
+              사연보기
+            </div>
           </NextLink>
-          <NextLink href="/account/login" style={{  marginRight:0}}>
+          <NextLink href='/account/login' style={{ marginRight: 0 }}>
             <div className={styles.menuItem}>로그인</div>
           </NextLink>
         </div>

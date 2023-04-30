@@ -1,35 +1,44 @@
 import Section from 'components/press/PressSection';
-import SearchBar from 'components/SearchBar';
-import { setPress } from 'slices/apiSlice';
+import SearchBar from 'components/press/SearchBar';
+import { setPress } from 'slices/api/apiSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Tab from '../../components/Tab';
 import styles from '../../styles/Press.module.css';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { setKeyword } from '@/slices/search/searchSlice';
+import { useRouter } from 'next/router';
 
-export default function PressHome(props) {
+export default function PressHome({ items }) {
   const dispatch = useDispatch();
-  dispatch(setPress(props));
-  const state = useSelector((state) => {
-    return state.apiData.press;
-  });
-  console.log(state);
+  const router = useRouter();
+  const currentPage = Number(router.query.page);
+
+  useEffect(() => {
+    dispatch(setPress(items));
+    dispatch(setKeyword(''));
+  }, []);
 
   return (
     <div className={styles.container}>
-      <Tab></Tab>
+      <div className={styles.banner}>
+        <h1>언론기사 검색</h1>
+        <p>키워드를 통해 관련된 언론기사를 검색 해보세요.</p>
+      </div>
       <SearchBar></SearchBar>
-      <Section></Section>
+      <Section currentPage={currentPage} items={items}></Section>
     </div>
   );
 }
 
-export async function getServerSideProps() {
-  //뉴스 조회
+export async function getServerSideProps(context) {
   const searchWord = '교권침해';
   const encode = encodeURI(searchWord);
+  const startPage = (Number(context.query.page) - 1) * 10 + 1;
+  const perPage = 10;
   try {
     const response = await axios.get(
-      `https://openapi.naver.com/v1/search/news.json?query=${encode}`,
+      `https://openapi.naver.com/v1/search/news.json?query=${encode}&start=${startPage}&display=${perPage}`,
       {
         headers: {
           Host: 'openapi.naver.com',
@@ -40,7 +49,7 @@ export async function getServerSideProps() {
       },
     );
     const { data } = response;
-    console.log(data);
+    console.log('data', data);
     if (response.status === 200) {
       return { props: data };
     }

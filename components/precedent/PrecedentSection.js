@@ -1,14 +1,22 @@
-import { Fragment } from 'react';
+import { useRouter } from 'next/router';
+import { Fragment, useEffect, useState } from 'react';
 import styles from '../../styles/Section.module.css';
-import Article from './Article';
+import Precedent from './Precedent';
 
 export default function PrecedentSection() {
+  const router = useRouter();
+  const query = router.query;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [query.page]);
+
   return (
     <Fragment>
       <div className={styles.container}>
-        <article className={styles.article}>
-          <Article></Article>
-        </article>
+        <div className={styles.precedent}>
+          <Precedent></Precedent>
+        </div>
       </div>
     </Fragment>
   );

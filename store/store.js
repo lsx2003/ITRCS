@@ -1,20 +1,22 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import apiSlice from "../slices/apiSlice";
-import authReducer from "slices/account/authSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import apiReducer from '../slices/api/apiSlice';
+import authReducer from 'slices/account/authSlice';
+import searchReducer from 'slices/search/searchSlice';
 import createSagaMiddleware from 'redux-saga';
 import authSaga from 'sagas/account/authSaga';
+import logger from 'redux-logger';
 
-let sagaMiddleware = createSagaMiddleware()
-const middleware = [sagaMiddleware]
+let sagaMiddleware = createSagaMiddleware();
+const middleware = [sagaMiddleware, logger];
 
 const store = configureStore({
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(middleware),
+  middleware: middleware,
   reducer: {
-    apiData: apiSlice.reducer,
-    auth:  authReducer
+    apiData: apiReducer,
+    auth: authReducer,
+    search: searchReducer,
   },
 });
-sagaMiddleware.run(authSaga)
+sagaMiddleware.run(authSaga);
 
 export default store;

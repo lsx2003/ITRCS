@@ -11,7 +11,7 @@ interface PageProps {
 export default function BackgroundPage ({ offset, imageFileName }: PageProps) {
     return (
         <>
-        <ParallaxLayer offset={offset} speed={0.2}>
+        <ParallaxLayer offset={offset} speed={0}>
             <Image 
                 src={"/img/" + imageFileName}
                 className={styles.backgroundImage}

@@ -21,12 +21,12 @@ export default function Main() {
   }
   useEffect(() => {
       textBox.current.addEventListener('scroll', (e) => {
-        if(textBox.current.scrollTop < textBox.current.scrollHeight / 3 * 1){
+        if(textBox.current.scrollTop < textBox.current.scrollHeight / 5 * 1){
           parallax.current.scrollTo(0)
-        }else if(textBox.current.scrollTop >= textBox.current.scrollHeight / 3 * 1 &&
-        textBox.current.scrollTop < textBox.current.scrollHeight / 3 * 2){
+        }else if(textBox.current.scrollTop >= textBox.current.scrollHeight / 5 * 1 &&
+        textBox.current.scrollTop < textBox.current.scrollHeight / 5 * 3){
           parallax.current.scrollTo(1)
-        }else if(textBox.current.scrollTop > textBox.current.scrollHeight / 3 * 2){
+        }else if(textBox.current.scrollTop >= textBox.current.scrollHeight / 5 * 3){
           parallax.current.scrollTo(2)
         }
       })

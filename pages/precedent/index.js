@@ -17,7 +17,7 @@ export default function PrecedentHome({ PrecSearch }) {
   const pathName = router.pathname;
   const currentPage = Number(router.query.page);
 
-  dispatch(setPrecedent(PrecSearch.prec));
+  // dispatch(setPrecedent(PrecSearch.prec));
 
   useEffect(() => {
     dispatch(setKeyword(''));
@@ -77,9 +77,11 @@ export async function getServerSideProps(context) {
     const response = await axios.get(
       `https://www.law.go.kr/DRF/lawSearch.do?OC=windxtoto123&target=prec&type=xml&query=${encode}&display=10&page=${page}`,
     );
+    console.log("response",response);
     const { data } = response;
     const xmlToJson = convert.xml2json(data, { compact: true, spaces: 4 });
     const prec = JSON.parse(xmlToJson);
+    console.log("prec",prec);
     return { props: prec };
   } catch (err) {
     console.log(err);

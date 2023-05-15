@@ -12,28 +12,30 @@ export default function Header() {
   return (
     <Fragment>
       <header className={styles.header}>
-        <div className={styles.headerTitle}>
-          Hansoom
-          <Image src='icons/hansoom_icon.svg' width='27' height='20' alt='logo' />
-        </div>
+        <NextLink href='/' style={{textDecoration:"none"}}>
+          <div className={styles.headerTitle}>
+            Hansoom
+            <Image src='icons/hansoom_icon.svg' width='27' height='20' alt='logo' />
+          </div>
+        </NextLink>
         <div></div>
         <div className={styles.menu}>
-          <NextLink href='/press?page=1'>
+          <NextLink href='/press?page=1' style={{textDecoration:"none"}}>
             <div className={styles.menuItem} style={{ borderRight: 'solid', borderColor: 'white' }}>
               최신기사
             </div>
           </NextLink>
-          <NextLink href='/precedent?page=1'>
+          <NextLink href='/precedent?page=1' style={{textDecoration:"none"}}>
             <div className={styles.menuItem} style={{ borderRight: 'solid', borderColor: 'white' }}>
               판례관련
             </div>
           </NextLink>
-          <NextLink href='/post'>
+          <NextLink href='/post' style={{textDecoration:"none"}}>
             <div className={styles.menuItem} style={{ borderRight: 'solid', borderColor: 'white' }}>
               사연보기
             </div>
           </NextLink>
-          <NextLink href='/account/login' style={{ marginRight: 0 }}>
+          <NextLink href='/account/login' style={{ marginRight: 0, textDecoration:"none" }}>
             <div className={styles.menuItem}>로그인</div>
           </NextLink>
         </div>

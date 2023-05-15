@@ -35,7 +35,7 @@ export default function Main() {
   return (
     <Fragment>
       <main className={styles.container}>
-          <Parallax ref={parallax} pages={3}>
+          <Parallax ref={parallax} pages={3} className={styles.parallax}>
             <BackgroundPage offset={0} imageFileName="background-image1.png" />
             <BackgroundPage offset={1} imageFileName="background-image2.png" />
             <BackgroundPage offset={2} imageFileName="background-image3.png" />

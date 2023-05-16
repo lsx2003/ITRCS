@@ -8,6 +8,8 @@ import NextLink from 'next/link';
 import { Layout } from 'components/account';
 import { login } from 'slices/account/authSlice';
 import { alertService } from 'services';
+import styles from 'styles/account/Login.module.css';
+import HansoomIconBlack from '../../public/icons/hansoom_icon_black.svg';
 
 export default Login;
 
@@ -51,8 +53,15 @@ function Login() {
 
     return (
         <Layout>
-            <div className="card">
-                <h4 className="card-header">Login</h4>
+            <div className="card" style={{width:"100%"}}>
+                <h4 className="card-header">
+                <NextLink href='/' style={{textDecoration:"none"}}>
+                    <div className={styles.headerTitle}>
+                        Hansoom
+                        <HansoomIconBlack width='27' height='20' style={{marginLeft:"10px"}}/>
+                    </div>
+                </NextLink>
+                </h4>
                 <div className="card-body">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">

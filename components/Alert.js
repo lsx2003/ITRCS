@@ -103,8 +103,8 @@ function Alert({ id, fade }) {
     if (!alerts.length) return null;
 
     return (
-        <div className="container">
-            <div className="m-3">
+        <div style={{position:"absolute",zIndex:1050,top:0,display:"flex",justifyContent:"center",width:"100%"}}>
+            <div className="m-3" style={{width:"80%"}}>
                 {alerts.map((alert, index) =>
                     <div key={index} className={cssClasses(alert)}>
                         <a className="close" onClick={() => removeAlert(alert)}>&times;</a>

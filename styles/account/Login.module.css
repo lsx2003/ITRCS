@@ -1,0 +1,11 @@
+.headerTitle{
+    color:black;
+    font-size:24px;
+    margin-left:32px;
+    display:flex;
+    flex-direction: start;
+    align-items: end;
+  }
+  .headerTitle img{
+    margin-left:20px;
+  }

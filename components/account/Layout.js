@@ -18,7 +18,7 @@ function Layout({ children }) {
     }, []);
 
     return (
-        <div className="col-md-6 offset-md-3 mt-5">
+        <div className="col-md-4 offset-md-4" style={{marginTop:"10%"}}>
             {children}
         </div>
     );

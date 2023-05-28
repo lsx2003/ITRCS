@@ -2,16 +2,23 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-
+import { Fragment, useEffect } from "react";
+import {useDispatch, useSelector} from 'react-redux';
 import NextLink from 'next/link';
 import { Layout } from 'components/account';
-// import { userService, alertService } from 'services';
+import { registerUser } from 'slices/account/authSlice';
+import { alertService } from 'services';
 
 export default Register;
 
 function Register() {
     const router = useRouter();
+    const dispatch = useDispatch();
 
+    const {user, error} = useSelector(({auth}) => ({
+        user: auth.user,
+        error: auth.error,
+    }));
     // form validation rules 
     const validationSchema = Yup.object().shape({
         firstName: Yup.string()
@@ -31,13 +38,23 @@ function Register() {
     const { errors } = formState;
 
     function onSubmit(user) {
-        // return userService.register(user)
-        //     .then(() => {
-        //         alertService.success('Registration successful', { keepAfterRouteChange: true });
-        //         router.push('login');
-        //     })
-        //     .catch(alertService.error);
+        dispatch(registerUser(user));
     }
+    useEffect(() => {
+        if(error) {
+            alertService.error(error);
+            return;
+        }
+        if(user) {
+            router.push('/');
+            try{
+                localStorage.setItem('user',JSON.stringify(user));
+            } catch(e) {
+                console.log('localStorage is not working');
+            }
+        }
+        
+    },[user,error,router]);
 
     return (
         <Layout>

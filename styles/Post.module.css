@@ -45,6 +45,20 @@ div .postContainer {
   font-weight: 200;
   margin-top: 8px;
 }
+.title {
+  display: inline-block;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: var(--color-point);
+}
+
+.pubDate {
+  text-align: right;
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 600;
+}
 /*
 .summary {
   display: flex;

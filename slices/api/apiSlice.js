@@ -5,6 +5,7 @@ const apiSlice = createSlice({
   initialState: {
     precedent: null,
     press: null,
+    posts: null,
   },
   reducers: {
     setPrecedent: (state, action) => {
@@ -12,6 +13,9 @@ const apiSlice = createSlice({
     },
     setPress: (state, action) => {
       state.press = action.payload;
+    },
+    setPosts: (state, action) => {
+      state.posts = action.payload;
     },
     // addPrecedent: (state, action) => {
     //   state.precedent?.push(...action.payload);
@@ -23,4 +27,4 @@ const apiSlice = createSlice({
 });
 
 export default apiSlice.reducer;
-export const { setPrecedent, setPress, addPrecedent, addPress } = apiSlice.actions;
+export const { setPrecedent, setPress,setPosts, addPrecedent, addPress } = apiSlice.actions;

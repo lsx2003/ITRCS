@@ -21,15 +21,15 @@ function Register() {
     }));
     // form validation rules 
     const validationSchema = Yup.object().shape({
-        firstName: Yup.string()
-            .required('First Name is required'),
-        lastName: Yup.string()
-            .required('Last Name is required'),
+        email: Yup.string()
+            .required('이메일을 입력해주세요.'),
         username: Yup.string()
-            .required('Username is required'),
+            .required('이름을 입력해주세요.'),
         password: Yup.string()
-            .required('Password is required')
-            .min(6, 'Password must be at least 6 characters')
+            .required('패스워드를 입력해주세요')
+            .min(6, '패스워드는 반드시 6자 이상이여야 합니다.'),
+        passwordConfirm: Yup.string().oneOf([Yup.ref('password'), null],
+            '비밀번호가 일치하지 않습니다.')
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -59,34 +59,34 @@ function Register() {
     return (
         <Layout>
             <div className="card">
-                <h4 className="card-header">Register</h4>
+                <h4 className="card-header">회원가입</h4>
                 <div className="card-body">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
-                            <label>First Name</label>
-                            <input name="firstName" type="text" {...register('firstName')} className={`form-control ${errors.firstName ? 'is-invalid' : ''}`} />
-                            <div className="invalid-feedback">{errors.firstName?.message}</div>
+                            <label>이메일</label>
+                            <input name="email" type="text" {...register('email')} className={`form-control ${errors.email ? 'is-invalid' : ''}`} />
+                            <div className="invalid-feedback">{errors.email?.message}</div>
                         </div>
                         <div className="form-group">
-                            <label>Last Name</label>
-                            <input name="lastName" type="text" {...register('lastName')} className={`form-control ${errors.lastName ? 'is-invalid' : ''}`} />
-                            <div className="invalid-feedback">{errors.lastName?.message}</div>
-                        </div>
-                        <div className="form-group">
-                            <label>Username</label>
+                            <label>이름</label>
                             <input name="username" type="text" {...register('username')} className={`form-control ${errors.username ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.username?.message}</div>
                         </div>
                         <div className="form-group">
-                            <label>Password</label>
+                            <label>비밀번호</label>
                             <input name="password" type="password" {...register('password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.password?.message}</div>
                         </div>
+                        <div className="form-group">
+                            <label>비밀번호 확인</label>
+                            <input name="passwordConfirm" type="password" {...register('passwordConfirm')} className={`form-control ${errors.passwordConfirm ? 'is-invalid' : ''}`} />
+                            <div className="invalid-feedback">{errors.passwordConfirm?.message}</div>
+                        </div>
                         <button disabled={formState.isSubmitting} className="btn btn-primary">
                             {formState.isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
-                            Register
+                            확인
                         </button>
-                        <NextLink href="/account/login" className="btn btn-link">Cancel</NextLink>
+                        <NextLink href="/account/login" className="btn btn-link">취소</NextLink>
                     </form>
                 </div>
             </div>

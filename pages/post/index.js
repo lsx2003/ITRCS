@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { faker } from '@faker-js/faker';
 import { setPosts } from '../../slices/api/apiSlice';
 import { useDispatch } from 'react-redux';
+import NextLink from 'next/link';
 
 export default function PostHome({posts}) {
   const router = useRouter();
@@ -30,6 +31,11 @@ export default function PostHome({posts}) {
         <p>어려운 상황을 함께 이겨나가기 위해서 각자의 소중한 경험과 정보를 함께 나눠보세요.</p>
       </div>
       <SearchBar pathName={pathName}></SearchBar>
+      <div className={styles.writeWrapper}>
+          <NextLink href="/post/create" className="btn-primary btn"style={{float:"right"}}>
+            글쓰기
+          </NextLink>
+      </div>
       <Section currentPage={currentPage}></Section>
       <div className={styles.btnWrapper}>
         {currentPage !== 1 && posts?.prec?.length !== 0 ? (
@@ -71,7 +77,6 @@ export async function getServerSideProps(context) {
       };
       posts.push(post);
     }
-    console.log("posts",posts);
     return { props: {posts} };
   } catch (err) {
     console.log(err);

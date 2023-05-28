@@ -106,3 +106,10 @@ div .postContainer {
   font-size: 27px;
   color: var(--color-base);
 }
+
+.writeWrapper{
+  width: 100%;
+  min-width: 300px;
+  max-width: 1000px;
+  margin: 15px 0 5px 0;
+}

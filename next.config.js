@@ -8,7 +8,16 @@ const nextConfig = {
     });
 
     return config;
-  }
+  },
+  async rewrites() {
+		return [
+			{
+				source: "/:api*",
+				destination: "http://lsx2003.direct.quickconnect.to:4000/:api*",
+			},
+		];
+	},
+
 
 };
 

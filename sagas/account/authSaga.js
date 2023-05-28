@@ -4,7 +4,7 @@ import { registerSuccess, registerFailure, loginSuccess, loginFailure,logout } f
 import { authSagaActions } from './authSagaActions'
 function* handleRegister(action) {
   try {
-    const response = yield call(axios.post, '/api/auth/registerUser', action.payload);
+    const response = yield call(axios.post, '/api/auth/signup', action.payload);
     yield put(registerSuccess(response.data));
   } catch (error) {
     yield put(registerFailure(error.message));

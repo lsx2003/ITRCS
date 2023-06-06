@@ -1,5 +1,5 @@
-import { Fragment } from 'react';
-import styles from '../../styles/Post.module.css';
+import { Fragment } from 'react'; 
+import styles from '../../styles/post/Post.module.css';
 import SearchBar from 'components/post/SearchBar';
 import Section from 'components/post/PostSection';
 import { useRouter } from 'next/router';

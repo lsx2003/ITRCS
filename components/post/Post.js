@@ -1,4 +1,4 @@
-import styles from '../../styles/Post.module.css';
+import styles from '../../styles/post/Post.module.css';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 

@@ -12,8 +12,8 @@ const nextConfig = {
   async rewrites() {
 		return [
 			{
-				source: "/:api*",
-				destination: "http://lsx2003.direct.quickconnect.to:4000/:api*",
+				source: "/:path*",
+				destination: "http://sml2.synology.me:4000/:path*",
 			},
 		];
 	},
